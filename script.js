@@ -45,7 +45,9 @@ function startGame() {
         if (timeLeft <= 0) {
             question.textContent = "Game Over"
             clearInterval(timeInterval)
-            countdown.textContent = ""    
+            countdown.textContent = ""  
+            zibanejadImg.style.display = "none"
+            nyrLogo.style.display = ""  
             timeLeft = 0
             removeDescription.textContent = "Your final score is: " + timeLeft
             message.textContent = "You ran out of time!"
@@ -55,6 +57,8 @@ function startGame() {
             question.textContent = "Game Over"
             clearInterval(timeInterval)
             countdown.textContent = ""
+            zibanejadImg.style.display = "none"
+            nyrLogo.style.display = ""
             removeDescription.textContent = "Your final score is: " + timeLeft
             highscores()
         }
@@ -84,8 +88,9 @@ function startGame() {
             savedScore.push({
                 user:user, score:timeLeft
             })
+            savedScore.sort(function(a, b){return b.score - a.score});
             localStorage.setItem("highScore", JSON.stringify(savedScore))
-            var htmlcode ="<table><thead><tr><th>User</th><th>Score</th></tr></thead><tbody>"
+            var htmlcode ="<table class='highscore-table'><thead><tr><th>User</th><th>Score</th></tr></thead><tbody>"
             for(let i = 0; i < savedScore.length; i++) {
                 htmlcode += `<tr><th>${savedScore[i].user}</th><th>${savedScore[i].score}</th></tr>`
             } 
