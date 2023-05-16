@@ -1,19 +1,32 @@
 var question = document.getElementById("header")
 var removeDescription = document.getElementById("description")
-
 var message = document.getElementById("correct-incorrect")
 var startBTN = document.getElementById("start-btn")
 var countdown = document.getElementById("timer-num")
-
 var choices = document.getElementById("choices")
+var highscoreForm = document.getElementById("submit-HS")
+highscoreForm.style.display = "none"
+// var highscoreTable = document.getElementById("highscore-table")
+var nyrLogo = document.getElementById("nyr")
+var troubaImg = document.getElementById("trouba")
+troubaImg.style.display = "none"
+var shesterkinImg = document.getElementById("shesterkin")
+shesterkinImg.style.display = "none"
+var kaneImg = document.getElementById("kane")
+kaneImg.style.display = "none"
+var foxImg = document.getElementById("fox")
+foxImg.style.display = "none"
+var zibanejadImg = document.getElementById("zibanejad")
+zibanejadImg.style.display = "none"
 
 // starts the game
 function startGame() {
+
     addEventListener("click", () => {
         startBTN.remove()
     })
     q1()
-
+    
     // timer
     var timeLeft = 31;
     var timeInterval = setInterval(function () {
@@ -32,15 +45,57 @@ function startGame() {
         if (timeLeft <= 0) {
             question.textContent = "Game Over"
             clearInterval(timeInterval)
-            countdown.textContent = ""
+            countdown.textContent = ""    
             timeLeft = 0
             removeDescription.textContent = "Your final score is: " + timeLeft
+            message.textContent = "You ran out of time!"
+            choices.remove()
+            highscores()
         } else {
             question.textContent = "Game Over"
             clearInterval(timeInterval)
             countdown.textContent = ""
             removeDescription.textContent = "Your final score is: " + timeLeft
+            highscores()
         }
+    }
+
+    function highscores() {
+        highscoreForm.style.display = "block"
+        var highscoreBtn = document.createElement("button")
+        highscoreBtn.textContent = "Submit your High Score"
+        highscoreBtn.addEventListener("click", highScoreBtnEventList)
+            
+    
+        highscoreForm.appendChild(highscoreBtn)
+        
+
+    }
+
+    //refreshes page
+    function playButtonEventList(){
+        window.location.reload()
+    }
+
+    function highScoreBtnEventList(event){
+        event.preventDefault()
+            var user = document.getElementById("initals").value
+            var savedScore = JSON.parse(localStorage.getItem("highScore")) || []
+            savedScore.push({
+                user:user, score:timeLeft
+            })
+            localStorage.setItem("highScore", JSON.stringify(savedScore))
+            var htmlcode ="<table><thead><tr><th>User</th><th>Score</th></tr></thead><tbody>"
+            for(let i = 0; i < savedScore.length; i++) {
+                htmlcode += `<tr><th>${savedScore[i].user}</th><th>${savedScore[i].score}</th></tr>`
+            } 
+            htmlcode += "</tbody></table>"
+            highscoreForm.innerHTML = htmlcode
+            
+            var playAgainBtn = document.createElement("button")
+            playAgainBtn.textContent = "Play Again"
+            playAgainBtn.addEventListener("click", playButtonEventList)
+            highscoreForm.appendChild(playAgainBtn)
     }
 
     // correct/incorrect message
@@ -59,6 +114,8 @@ function startGame() {
     function q1() {
         question.textContent = "What number does Jacob Trouba wear?"
         removeDescription.textContent = ""
+        nyrLogo.style.display = "none"
+        troubaImg.style.display = ""
 
         // question 1 choices
         var c1q1 = document.createElement("button")
@@ -122,7 +179,8 @@ function startGame() {
     function q2() {
         question.textContent = "What number does Igor Shesterkin wear?"
         removeDescription.textContent = ""
-
+        troubaImg.style.display = "none"
+        shesterkinImg.style.display = ""
         // question 2 choices
         var c1q2 = document.createElement("button")
         choices.appendChild(c1q2)
@@ -185,6 +243,8 @@ function startGame() {
     function q3() {
         question.textContent = "What number does Patrick Kane wear?"
         removeDescription.textContent = ""
+        shesterkinImg.style.display = "none"
+        kaneImg.style.display = ""
 
         // question 3 choices
         var c1q3 = document.createElement("button")
@@ -247,6 +307,8 @@ function startGame() {
     function q4() {
         question.textContent = "What number does Adam Fox wear?"
         removeDescription.textContent = ""
+        kaneImg.style.display = "none"
+        foxImg.style.display = ""
 
         // question 4 choices
         var c1q4 = document.createElement("button")
@@ -309,6 +371,8 @@ function startGame() {
     function q5() {
         question.textContent = "What number does Mika Zibanejad wear?"
         removeDescription.textContent = ""
+        foxImg.style.display = "none"
+        zibanejadImg.style.display = ""
 
         // question 5 choices
         var c1q5 = document.createElement("button")

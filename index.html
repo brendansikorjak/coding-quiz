@@ -5,27 +5,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>NYR Quiz</title>
 </head>
 
 <body>
-    <h1 id="header">NYR players number Quiz</h1>
+    <h1 id="header">NYR Players Number Quiz</h1>
     <p id="description">Answer the following NYR questions within the time limit to the best of your abilites. Every
         incorrect answer subtracts 10 seconds from the timer. Good
         Luck!</p>
-    <button id="start-btn" onclick="startGame()">Start Game</button>
+    <img id="nyr" src="./images/new-york-rangers-logo.png">
+    <img id="trouba" src="./images/jacob-trouba.png">
+    <img id="shesterkin" src="./images/igor-shesterkin.png">
+    <img id="kane" src="./images/patrick-kane.png">
+    <img id="fox" src="./images/adam-fox.png">
+    <img id="zibanejad" src="./images/mika-zibanejad.png">
     <div id="timer-num"></div>
-    <div id="choices"></div>
+    <div class="button-container">
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+        <div id="choices"></div>
+    </div>
     <div id="correct-incorrect"></div>
+    <section id="submit-HS">
+        <form id="high-score-form">
+            <label>Enter your intials: </label>
+            <input id="initals" type="text">
+        </form>
+    </section>
+    <!-- <table id="highscore-table">
+        <tr>
+            <th>User</th>
+            <th>Score</th>
+        </tr>
+        <tr>
+
+        </tr>
+        
+    </table> -->
 
     <script src="script.js"></script>
 </body>
 
 </html>
 
-<!-- to do
--restart game
--submit score w initials
--store highscores
--display highscores
--style css -->
