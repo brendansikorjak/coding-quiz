@@ -90,7 +90,7 @@ function startGame() {
             })
             savedScore.sort(function(a, b){return b.score - a.score});
             localStorage.setItem("highScore", JSON.stringify(savedScore))
-            var htmlcode ="<table class='highscore-table'><thead><tr><th>User</th><th>Score</th></tr></thead><tbody>"
+            var htmlcode ="<table class='highscore-table'><thead><tr><th class='highscore-heading'>User</th><th class='highscore-heading'>Score</th></tr></thead><tbody>"
             for(let i = 0; i < savedScore.length; i++) {
                 htmlcode += `<tr><th>${savedScore[i].user}</th><th>${savedScore[i].score}</th></tr>`
             } 
@@ -101,6 +101,9 @@ function startGame() {
             playAgainBtn.textContent = "Play Again"
             playAgainBtn.addEventListener("click", playButtonEventList)
             highscoreForm.appendChild(playAgainBtn)
+            message.textContent = ""
+            nyrLogo.style.display = "none"
+
     }
 
     // correct/incorrect message

@@ -16,7 +16,7 @@ h1 {
     color: red;
     /* text-align: center; */
     font-size: 25px;
-    margin: 50px;
+    margin: 25px;
 }
 .button-container{
     display: flex;
@@ -65,4 +65,10 @@ img {
 
 .highscore-table {
     margin: 0 auto;
+    font-size: 30px
+}
+
+.highscore-heading {
+    padding: 25px;
+    color: red;
 }
