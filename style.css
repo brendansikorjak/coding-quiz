@@ -72,7 +72,7 @@ img {
   color: red;
 }
 
-@media (max-width: 775) {
+@media (max-width: 775px) {
   img {
     height: auto;
   }
