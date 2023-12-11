@@ -74,6 +74,6 @@ img {
 
 @media (max-width: 775px) {
   img {
-    height: auto;
+    height: 0%;
   }
 }
